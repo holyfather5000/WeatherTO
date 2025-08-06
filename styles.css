@@ -1,0 +1,120 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px 40px 20px 40px;
+  max-width: 500px;
+  height: 100vh;
+  margin: auto;
+  margin-top: 2rem;
+  background: linear-gradient(0deg, rgba(227, 219, 204, 1) 0%, rgba(61, 183, 227, 1) 14%, rgba(67, 138, 196, 1) 50%, rgba(24, 108, 161, 1) 100%);
+  color: #000;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 100vw;
+}
+
+.suncont {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+  margin: 0px 20px;
+}
+.weather-icon {
+  width: 160px;
+}
+
+h1 {
+  line-height: 0.4em;
+}
+#desc {
+  text-transform: capitalize;
+  font-size: 1.4em;
+}
+img[src*="01n"] {
+  visibility: hidden;
+}
+.marker {
+  font-size: smaller; 
+}
+.bigger {
+  font-size: 3em; 
+}
+.feelstxt {
+  font-size: 0.8em;
+}
+.smaller {
+  font-size: 1em;
+}
+
+#current-time,
+#city {
+  font-size: 1.1em;
+}
+
+/* AQI styles */
+#aqi {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+/* .aqi-good .aqi-fair {
+} */
+
+.aqi-moderate {
+  color: orange;
+}
+
+.aqi-poor {
+  color: darkorange;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.aqi-very-poor {
+  color: red;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+#tomorrow-forecast {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 10px;
+  background: #2d4650;
+  border-radius: 8px;
+  scrollbar-width: thin;
+}
+
+.forecast-hour {
+  flex: 0 0 auto;
+  text-align: center;
+  padding: 8px;
+  min-width: 60px;
+  background: radial-gradient(circle, rgb(108, 187, 235) 0%, rgba(50, 153, 208, 0.981) 100%);
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.forecast-time {
+  font-size: 0.8rem;
+  color: #2d4650;
+}
+
+.forecast-temp {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #2d4650;
+}
+
+#tomorrow-forecast img {
+  width: 40px;
+  height: 40px;
+}
+
+#temp-alert {
+  color: #ffffff; /* White */
+  font-weight: bold;
+}
