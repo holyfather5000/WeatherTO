@@ -176,8 +176,6 @@ async function getWeatherAndAirQuality() {
 
 
 
-
-
 // Service Worker registration
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/WeatherTO/service-worker.js')
@@ -187,11 +185,6 @@ if ('serviceWorker' in navigator) {
 window.onload = function () {
   getWeatherAndAirQuality();
   setupCityChangeHandler();
-
-  // Auto-scroll for mobile
-  if (window.innerWidth <= 600) {
-    window.scrollTo({ top: 10, behavior: 'smooth' });
-  }
 };
 
 // Refresh every 10 minutes
@@ -202,7 +195,6 @@ function setupCityChangeHandler() {
   const citySpan = document.getElementById('city');
   const input = document.createElement('input');
   const error = document.createElement('span');
-  const suggestionBox = document.createElement('ul');
 
   input.type = 'text';
   input.id = 'cityInput';
@@ -214,130 +206,37 @@ function setupCityChangeHandler() {
   error.style.display = 'none';
   error.style.marginLeft = '8px';
 
-  suggestionBox.id = 'citySuggestions';
-  suggestionBox.style.position = 'absolute';
-  suggestionBox.style.backgroundColor = '#fff';
-  suggestionBox.style.border = '1px solid #ccc';
-  suggestionBox.style.listStyle = 'none';
-  suggestionBox.style.padding = '4px';
-  suggestionBox.style.margin = '0';
-  suggestionBox.style.display = 'none';
-  suggestionBox.style.zIndex = 999;
-
   citySpan.parentNode.insertBefore(input, citySpan.nextSibling);
   input.parentNode.insertBefore(error, input.nextSibling);
-  document.body.appendChild(suggestionBox);
-
-  let activeIndex = -1;
-  let suggestions = [];
 
   citySpan.style.cursor = 'pointer';
   citySpan.title = 'Click to change city';
 
-  citySpan.addEventListener('click', () => {
-    input.value = currentCity;
-    citySpan.style.display = 'none';
-    input.style.display = 'inline';
+citySpan.addEventListener('click', () => {
+  input.value = currentCity;
+  citySpan.style.display = 'none';
+  input.style.display = 'inline';
+
+  // Delay focus slightly to ensure keyboard appears on mobile
+  setTimeout(() => {
     input.focus();
-    positionSuggestionBox();
-  });
+  }, 50);
+});
 
-  input.addEventListener('input', async () => {
-    const query = input.value.trim();
-    if (query.length < 2) {
-      hideSuggestions();
-      return;
-    }
-
-    const apiKey = 'e5b6fb3f049377a3fb4da24d6d858698';
-    const url = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(query)}&limit=5&appid=${apiKey}`;
-    try {
-      const res = await fetch(url);
-      const results = await res.json();
-      suggestions = results.map(
-        (loc) => `${loc.name}${loc.state ? ', ' + loc.state : ''}, ${loc.country}`
-      );
-      renderSuggestions();
-    } catch {
-      hideSuggestions();
-    }
-  });
 
   input.addEventListener('blur', () => {
-    setTimeout(() => {
-      if (!suggestionBox.contains(document.activeElement)) {
-        hideSuggestions();
-        handleCityChange(input.value);
-      }
-    }, 200);
+    handleCityChange(input.value);
   });
 
   input.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowDown') {
-      activeIndex = (activeIndex + 1) % suggestions.length;
-      updateActiveSuggestion();
-      e.preventDefault();
-    } else if (e.key === 'ArrowUp') {
-      activeIndex = (activeIndex - 1 + suggestions.length) % suggestions.length;
-      updateActiveSuggestion();
-      e.preventDefault();
-    } else if (e.key === 'Enter') {
-      if (activeIndex >= 0 && suggestions[activeIndex]) {
-        input.value = suggestions[activeIndex];
-        hideSuggestions();
-      }
+    if (e.key === 'Enter') {
       input.blur();
     } else if (e.key === 'Escape') {
-      resetInput();
+      input.style.display = 'none';
+      citySpan.style.display = 'inline';
+      error.style.display = 'none';
     }
   });
-
-  function renderSuggestions() {
-    suggestionBox.innerHTML = '';
-    if (suggestions.length === 0) {
-      hideSuggestions();
-      return;
-    }
-
-    suggestions.forEach((suggestion, i) => {
-      const item = document.createElement('li');
-      item.textContent = suggestion;
-      item.style.padding = '4px 8px';
-      item.style.cursor = 'pointer';
-
-      item.addEventListener('mousedown', () => {
-        input.value = suggestion;
-        hideSuggestions();
-        input.blur();
-      });
-
-      suggestionBox.appendChild(item);
-    });
-
-    activeIndex = -1;
-    positionSuggestionBox();
-    suggestionBox.style.display = 'block';
-  }
-
-  function updateActiveSuggestion() {
-    const items = suggestionBox.querySelectorAll('li');
-    items.forEach((el, i) => {
-      el.style.backgroundColor = i === activeIndex ? '#eee' : '#fff';
-    });
-  }
-
-  function hideSuggestions() {
-    suggestionBox.style.display = 'none';
-    suggestions = [];
-    activeIndex = -1;
-  }
-
-  function positionSuggestionBox() {
-    const rect = input.getBoundingClientRect();
-    suggestionBox.style.top = `${rect.bottom + window.scrollY}px`;
-    suggestionBox.style.left = `${rect.left + window.scrollX}px`;
-    suggestionBox.style.width = `${rect.width}px`;
-  }
 
   async function handleCityChange(newCity) {
     const trimmed = newCity.trim();
@@ -350,7 +249,7 @@ function setupCityChangeHandler() {
     if (isValid) {
       currentCity = trimmed;
       localStorage.setItem('city', currentCity);
-      document.getElementById('city').textContent = currentCity;
+      citySpan.textContent = currentCity;
       getWeatherAndAirQuality();
       resetInput();
     } else {
@@ -363,7 +262,6 @@ function setupCityChangeHandler() {
     input.style.display = 'none';
     citySpan.style.display = 'inline';
     error.style.display = 'none';
-    hideSuggestions();
   }
 
   async function validateCity(cityName) {

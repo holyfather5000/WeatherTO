@@ -91,7 +91,9 @@ img[src*="01n"], img[src*="01d"] {
     letter-spacing: 2px;
 }
 #cityInput {
-    padding: 8px 180px 8px 15px;;
+    margin-top: 20px;
+    padding: 8px 180px 8px 15px;
+    background: #ffffff68
 } 
 #citySuggestions li {
     color: #252525;
@@ -188,10 +190,5 @@ img[src*="01n"], img[src*="01d"] {
         color: rgb(255, 255, 255); 
         letter-spacing: 2px;}
 
-    #city { 
-    font-size: 1.1em; 
-    color: white; 
-    opacity: 0.5; 
-    letter-spacing: 2px;}
 
 }
