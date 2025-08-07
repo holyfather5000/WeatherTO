@@ -62,16 +62,38 @@
   </div>
 </div>
 <br><br>
+
+<br>
    <h3>Next 24 hours</h3>
 <div id="tomorrow-forecast"></div>
 
-<br><br><br>
+<br>
 <div id="three-day-forecast"></div>
 <br><br><br>
 
 <div style="display: block; max-width: 400px; font-size: smaller; text-align: center;">
         <p>Design | Gary Leggett</p>
     </div>
+
+
+    <script>
+  const hour = new Date().getHours();
+  const body = document.body;
+
+  //daytime gradient
+  const dayGradient = "linear-gradient(0deg, rgb(204, 225, 227) 0%, rgba(61, 183, 227, 1) 14%, rgba(67, 138, 196, 1) 50%, rgba(24, 108, 161, 1) 100%)";
+
+  // A darker version for night)
+  const nightGradient = "linear-gradient(0deg, rgb(18, 32, 41) 0%, rgb(25, 55, 77) 50%, rgb(10, 25, 41) 100%)";
+
+  // Between 7PM and 6AM = night
+  if (hour >= 19 || hour < 6) {
+    body.style.background = nightGradient;
+  } else {
+    body.style.background = dayGradient;
+  }
+</script>
+
 
 </body>
 </html>
