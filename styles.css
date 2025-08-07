@@ -2,7 +2,7 @@ body {
   font-family: 'DM Sans', Arial, sans-serif;
   padding: 20px 40px 20px 40px;
   max-width: 500px;
-  max-height: 150vh;
+ min-height: 100vh;
   margin: auto;
   margin-top: 2rem;
   background: linear-gradient(0deg, rgb(204, 225, 227) 0%, rgba(61, 183, 227, 1) 14%, rgba(67, 138, 196, 1) 50%, rgba(24, 108, 161, 1) 100%);
@@ -144,3 +144,19 @@ img[src*="01n"], img[src*="01d"] {
   margin-top: 1.5em;
 }
 
+
+@media (max-width: 380px) {
+  body {
+    padding: auto 30px;
+    font-size: 0.85em;
+  }
+    #current-time { 
+        font-size: 1.3em; color: rgb(255, 255, 255); letter-spacing: 2px;}
+
+    #city { 
+    font-size: 1.1em; 
+    color: white; 
+    opacity: 0.5; 
+    letter-spacing: 2px;}
+
+}
