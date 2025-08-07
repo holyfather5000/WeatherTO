@@ -187,4 +187,11 @@ if (threeDayContainer) {
 }
 
 window.onload = getWeatherAndAirQuality;
+window.onload = function() {
+  getWeatherAndAirQuality();
+  // Auto-scroll for mobile users
+  if (window.innerWidth <= 600) { // adjust threshold as needed
+    window.scrollTo({ top: 10, behavior: 'smooth' });
+  }
+};
 setInterval(() => { window.location.reload(); }, 600000);
