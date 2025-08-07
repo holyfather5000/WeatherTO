@@ -8,11 +8,16 @@ function formatTimeShort(unixTime) {
 
 function getCurrentTime() {
   const now = new Date();
-  return now.toLocaleTimeString('en-US', {
+  const timeString = now.toLocaleTimeString('en-US', {
     hour: 'numeric',
     minute: '2-digit',
     hour12: true
   });
+  const match = timeString.match(/^(\d{1,2}:\d{2})\s*([AP]M)$/);
+  if (match) {
+    return `${match[1]}<span id="ampm">${match[2]}</span>`;
+  }
+  return timeString;
 }
 
 async function getWeatherAndAirQuality() {
@@ -45,7 +50,7 @@ async function getWeatherAndAirQuality() {
     const lon = data.coord.lon;
 
     document.getElementById('city').textContent = city;
-    document.getElementById('current-time').textContent = currentTime;
+    document.getElementById('current-time').innerHTML = getCurrentTime();
     document.getElementById('icon').src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
     document.getElementById('temp').textContent = Math.round(temp);
     document.getElementById('feels').textContent = Math.round(feels_like);
