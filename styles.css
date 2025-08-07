@@ -19,7 +19,7 @@ a {
 .opac {
   opacity: 0.8;
   font-size: small;
-  line-height: 0.6em;
+  line-height: 0.8em;
 }
 
 .container {
@@ -67,7 +67,7 @@ img[src*="01n"], img[src*="01d"] {
 }
 .white { color: white; }
 
-#current-time { font-size: 1.5em; color: white; letter-spacing: 2px;}
+#current-time { font-size: 1.5em; color: rgb(255, 255, 255); letter-spacing: 2px;}
 
 #city { 
     font-size: 1.3em; 
