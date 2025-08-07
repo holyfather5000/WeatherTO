@@ -6,15 +6,20 @@ body {
   margin: auto;
   margin-top: 2rem;
   background: linear-gradient(0deg, rgb(204, 225, 227) 0%, rgba(61, 183, 227, 1) 14%, rgba(67, 138, 196, 1) 50%, rgba(24, 108, 161, 1) 100%);
-  color: #022d3c;
+  color: white;
   font-size: 0.9em;
-  line-height: 0.8em;;
+  line-height: 0.8em;
 }
 
 a {
-  color: #2d4650;
+  color: white;
   text-decoration: none;
   font-size: smaller;
+}
+.opac {
+  opacity: 0.8;
+  font-size: small;
+  line-height: 0.6em;
 }
 
 .container {
@@ -29,7 +34,7 @@ a {
   justify-content: space-between;
   max-width: 400px;
   margin: 0px 20px;
-  color: #022d3c;
+  opacity: 0.7;
 }
 
 .weather-icon {
@@ -43,9 +48,10 @@ h1 {
   text-transform: capitalize;
   color: white;
 }
-img[src*="01n"] {
+img[src*="01n"], img[src*="01d"] {
   visibility: hidden;
 }
+
 .marker {
   font-size: smaller; 
 }
@@ -63,7 +69,11 @@ img[src*="01n"] {
 
 #current-time { font-size: 1.5em; color: white; letter-spacing: 2px;}
 
-#city { font-size: 1.4em; color: white; opacity: 0.5; letter-spacing: 6px;}
+#city { 
+    font-size: 1.3em; 
+    color: white; 
+    opacity: 0.5; 
+    letter-spacing: 2px;}
 
 /* AQI styles */
 #aqi {
