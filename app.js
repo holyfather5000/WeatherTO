@@ -144,7 +144,7 @@ if (threeDayContainer) {
     <div style="display:flex;gap:16px;">
       ${threeDayForecast.map(day => `
         <div class="forecast-hour">
-          <div>${new Date(day.date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</div>
+          <div>${new Date(day.date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }).replace(',', '')}</div>
           <img src="https://openweathermap.org/img/wn/${day.icon}.png" alt="">
           <div class="forecast-temp">${day.avgTemp}°C</div>
         </div>
