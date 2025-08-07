@@ -11,7 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
     <link rel="manifest" href="/WeatherTO/manifest.json">
     <meta name="theme-color" content="#186ca1" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Weather TO">
+<link rel="apple-touch-icon" href="/WeatherTO/apple-touch-icon.png">
 <meta name="mobile-web-app-capable" content="yes">
+
 </head>
 <body>
 
@@ -49,17 +54,17 @@
     </div>
   </div>
   </span>
-      <br><br>
-
-   <h3>Next 24 hours</h3>
-<div id="tomorrow-forecast"></div>
-<br><br>
+      <br>
 <div class="suncont" style="max-width: 100vw; overflow-x: auto;">
   <div style="display: flex; justify-content: space-between; width: 100%; max-width: 350px; margin: 0 auto; font-size: small; line-height: 0.5em; box-sizing: border-box;">
     <p style="margin-right: 10px;"><strong>Sunrise:</strong> <span id="sunrise"></span></p>
     <p><strong>Sunset:</strong> <span id="sunset"></span></p>
   </div>
 </div>
+<br>
+   <h3>Next 24 hours</h3>
+<div id="tomorrow-forecast"></div>
+
 <br><br><br>
 <div id="three-day-forecast"></div>
 <br><br><br>
