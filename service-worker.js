@@ -1,12 +1,12 @@
 const CACHE_NAME = 'weather-pwa-cache-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/app.js',
-  '/manifest.json',
-  '/apple-touch-icon.png',
-  '/android-chrome-512x512.png'
+  '/WeatherTO/',
+  '/WeatherTO/index.html',
+  '/WeatherTO/styles.css',
+  '/WeatherTO/app.js',
+  '/WeatherTO/manifest.json',
+  '/WeatherTO/apple-touch-icon.png',
+  '/WeatherTO/android-chrome-512x512.png'
 ];
 
 // Install: cache core files
