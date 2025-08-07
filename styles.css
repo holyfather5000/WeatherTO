@@ -1,12 +1,14 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
   padding: 20px 40px 20px 40px;
   max-width: 500px;
   max-height: 150vh;
   margin: auto;
   margin-top: 2rem;
-  background: linear-gradient(0deg, rgba(227, 219, 204, 1) 0%, rgba(61, 183, 227, 1) 14%, rgba(67, 138, 196, 1) 50%, rgba(24, 108, 161, 1) 100%);
-  color: #000;
+  background: linear-gradient(0deg, rgb(204, 225, 227) 0%, rgba(61, 183, 227, 1) 14%, rgba(67, 138, 196, 1) 50%, rgba(24, 108, 161, 1) 100%);
+  color: #022d3c;
+  font-size: 0.9em;
+  line-height: 0.8em;;
 }
 
 a {
@@ -27,18 +29,18 @@ a {
   justify-content: space-between;
   max-width: 400px;
   margin: 0px 20px;
-  color: rgb(145, 179, 214);
+  color: #022d3c;
 }
+
 .weather-icon {
   width: 160px;
 }
 
 h1 {
-  line-height: 0.4em;
+  line-height: 0.6em;
 }
 #desc {
   text-transform: capitalize;
-  font-size: 1.4em;
   color: white;
 }
 img[src*="01n"] {
@@ -48,20 +50,20 @@ img[src*="01n"] {
   font-size: smaller; 
 }
 .bigger {
-  font-size: 3em; 
+  font-size: 4em;
 }
 .feelstxt {
   font-size: 0.8em;
+  opacity: 0.8;
 }
 .smaller {
   font-size: 1em;
 }
 .white { color: white; }
 
-#current-time,
-#city {
-  font-size: 1.1em;
-}
+#current-time { font-size: 1.5em; color: white; letter-spacing: 2px;}
+
+#city { font-size: 1.4em; color: white; opacity: 0.5; letter-spacing: 6px;}
 
 /* AQI styles */
 #aqi {
@@ -90,9 +92,8 @@ img[src*="01n"] {
 #tomorrow-forecast {
   display: flex;
   overflow-x: auto;
-  gap: 10px;
-  padding: 10px;
-  background: #2d4650;
+  padding: 0px;
+  gap: 4px;
   border-radius: 8px;
   scrollbar-width: thin;
 }

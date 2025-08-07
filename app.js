@@ -153,14 +153,26 @@ if (threeDayContainer) {
   `;
 }
 
-    // Temp alert
-    const avgToday = byDate[today]?.reduce((a, b) => a + b, 0) / byDate[today]?.length || null;
-    const avgYesterday = byDate[yesterdayStr]?.reduce((a, b) => a + b, 0) / byDate[yesterdayStr]?.length || null;
+    // Temp alert for high/low change
+    const todayTemps = byDate[today] || [];
+    const yesterdayTemps = byDate[yesterdayStr] || [];
+
+    const todayHigh = todayTemps.length ? Math.max(...todayTemps) : null;
+    const todayLow = todayTemps.length ? Math.min(...todayTemps) : null;
+    const yesterdayHigh = yesterdayTemps.length ? Math.max(...yesterdayTemps) : null;
+    const yesterdayLow = yesterdayTemps.length ? Math.min(...yesterdayTemps) : null;
 
     let alertMsg = '';
-    if (avgToday && avgYesterday && Math.abs(avgToday - avgYesterday) >= 5) 
-    {
-    alertMsg = `⚠ Change of ${(avgToday - avgYesterday).toFixed(1)}°C from yesterday.`;
+    if (
+      todayHigh !== null && yesterdayHigh !== null &&
+      Math.abs(todayHigh - yesterdayHigh) >= 3
+    ) {
+      alertMsg = `⚠ High changed by ${(todayHigh - yesterdayHigh).toFixed(1)}°C from yesterday.`;
+    } else if (
+      todayLow !== null && yesterdayLow !== null &&
+      Math.abs(todayLow - yesterdayLow) >= 3
+    ) {
+      alertMsg = `⚠ Low changed by ${(todayLow - yesterdayLow).toFixed(1)}°C from yesterday.`;
     }
 
     const alertElement = document.getElementById('temp-alert');
