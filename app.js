@@ -186,6 +186,19 @@ if (threeDayContainer) {
   }
 }
 
+// manifest
+// service-worker.js
+self.addEventListener('fetch', function(event) {
+  event.respondWith(fetch(event.request));
+});
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/WeatherTO/service-worker.js')
+    .then(function() {
+      console.log('Service Worker Registered');
+    });
+}
+
 window.onload = getWeatherAndAirQuality;
 window.onload = function() {
   getWeatherAndAirQuality();
