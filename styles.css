@@ -87,8 +87,24 @@ img[src*="01n"], img[src*="01d"] {
 #city { 
     font-size: 1.3em; 
     color: white; 
-    opacity: 0.5; 
-    letter-spacing: 2px;}
+    opacity: 0.8; 
+    letter-spacing: 2px;
+}
+#cityInput {
+    padding: 8px 180px 8px 15px;;
+} 
+#citySuggestions li {
+    color: #252525;
+    line-height: 2em;
+  }
+#citySuggestions li:hover {
+    background-color: #eee;
+  }
+
+#city:hover {
+  color: #fbe45f;
+  opacity: 1;
+}
 
 /* AQI styles */
 #aqi {
