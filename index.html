@@ -15,8 +15,8 @@
     </div>
     <div style="text-align: center;"></div>
         <p style="margin-top: 0; line-height: 1;">
-            <span class="bigger" id="feels"></span><span class="marker">°C</span><br>
-            <span class="feelstxt">Feels Like</span>
+            <span class="bigger white" id="feels"></span><span class="marker white">°C</span><br>
+            <span class="feelstxt white">Feels Like</span>
         </p>
 </div>
 
@@ -27,7 +27,7 @@
 
 <div id="temp-alert" style="display:none; font-weight:bold; margin-bottom:10px;"></div>
 
-  <p>Air Quality: <span id="aqi"></span></p>
+  <p>Air Quality: <span id="aqi"></span> <a href="https://aqicn.org/station/toronto/" target="_blank">details</a></p>
 
   <div id="weather">
     <div class="weather-info">
@@ -35,16 +35,19 @@
       <p>Temperature: <span id="temp"></span><span class="marker">°C</span></p>
       <p>Humidity: <span id="humidity"></span><span class="marker">%</span></p>
       <p>Wind Speed: <span id="wind"></span><span class="marker"> m/s</span></p>
-   <br>
-   <h3>Next 24 hours</h3>
-<div id="tomorrow-forecast"></div>
-<br>
-
-<div class="suncont">
+      <div class="suncont">
     <div style="display: flex; justify-content: space-between; width: 400px; margin: 0 auto; font-size: small; ">
         <p><strong>Sunrise:</strong> <span id="sunrise"></span></p>
         <p><strong>Sunset:</strong> <span id="sunset"></span></p>
     </div>
 </div>
+
+   <br>
+   <h3>Next 24 hours</h3>
+<div id="tomorrow-forecast"></div>
+<br>
+<div id="three-day-forecast"></div>
+<br>
+
 </body>
 </html>

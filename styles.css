@@ -2,11 +2,17 @@ body {
   font-family: Arial, sans-serif;
   padding: 20px 40px 20px 40px;
   max-width: 500px;
-  height: 100vh;
+  max-height: 150vh;
   margin: auto;
   margin-top: 2rem;
   background: linear-gradient(0deg, rgba(227, 219, 204, 1) 0%, rgba(61, 183, 227, 1) 14%, rgba(67, 138, 196, 1) 50%, rgba(24, 108, 161, 1) 100%);
   color: #000;
+}
+
+a {
+  color: #2d4650;
+  text-decoration: none;
+  font-size: smaller;
 }
 
 .container {
@@ -18,9 +24,10 @@ body {
 
 .suncont {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 400px;
   margin: 0px 20px;
+  color: rgb(52, 52, 52);
 }
 .weather-icon {
   width: 160px;
@@ -32,6 +39,7 @@ h1 {
 #desc {
   text-transform: capitalize;
   font-size: 1.4em;
+  color: white;
 }
 img[src*="01n"] {
   visibility: hidden;
@@ -48,6 +56,7 @@ img[src*="01n"] {
 .smaller {
   font-size: 1em;
 }
+.white { color: white; }
 
 #current-time,
 #city {
@@ -118,3 +127,8 @@ img[src*="01n"] {
   color: #ffffff; /* White */
   font-weight: bold;
 }
+
+#three-day-forecast {
+  margin-top: 1.5em;
+}
+

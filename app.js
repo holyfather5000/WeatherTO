@@ -120,6 +120,39 @@ if (forecastContainer) {
   `).join('');
 }
 
+// --- 3-DAY FORECAST ---
+const days = Object.keys(byDate)
+  .filter(date => date > today) // skip today
+  .sort()
+  .slice(0, 3); // next 3 days
+
+const threeDayForecast = days.map(date => {
+  const temps = byDate[date];
+  const avgTemp = Math.round(temps.reduce((a, b) => a + b, 0) / temps.length);
+  // Find the most frequent icon for the day
+  const icons = forecastList.filter(item => item.dt_txt.startsWith(date)).map(item => item.weather[0].icon);
+  const icon = icons.sort((a,b) =>
+    icons.filter(v => v===a).length - icons.filter(v => v===b).length
+  ).pop();
+  return { date, avgTemp, icon };
+});
+
+const threeDayContainer = document.getElementById('three-day-forecast');
+if (threeDayContainer) {
+  threeDayContainer.innerHTML = `
+    <h3>3-Day Forecast</h3>
+    <div style="display:flex;gap:16px;">
+      ${threeDayForecast.map(day => `
+        <div class="forecast-hour">
+          <div>${new Date(day.date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</div>
+          <img src="https://openweathermap.org/img/wn/${day.icon}.png" alt="">
+          <div class="forecast-temp">${day.avgTemp}°C</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
     // Temp alert
     const avgToday = byDate[today]?.reduce((a, b) => a + b, 0) / byDate[today]?.length || null;
     const avgYesterday = byDate[yesterdayStr]?.reduce((a, b) => a + b, 0) / byDate[yesterdayStr]?.length || null;
