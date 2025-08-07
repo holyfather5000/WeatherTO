@@ -229,6 +229,7 @@ citySpan.addEventListener('click', () => {
 
   input.addEventListener('blur', () => {
     handleCityChange(input.value);
+    document.body.style.zoom = '1';
   });
 
   input.addEventListener('keydown', (e) => {
