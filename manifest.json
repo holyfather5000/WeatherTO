@@ -1,8 +1,9 @@
     {
       "name": "Weather TO",
       "short_name": "WeatherTO",
-      "start_url": "/",
-      "display": "fullscreen",
+      "start_url": "/WeatherTO/",
+      "display_override": ["fullscreen", "minimal-ui"],
+  "display": "standalone",
       "background_color": "#186ca1",
       "theme_color": "#186ca1",
       "icons": [
