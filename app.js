@@ -214,14 +214,17 @@ function setupCityChangeHandler() {
 
 citySpan.addEventListener('click', () => {
   input.value = currentCity;
+
+  // Show input and hide city label
   citySpan.style.display = 'none';
   input.style.display = 'inline';
 
-  // Delay focus slightly to ensure keyboard appears on mobile
+  // Delay focus to ensure mobile keyboard appears
   setTimeout(() => {
     input.focus();
-  }, 50);
+  }, 100);
 });
+
 
 
   input.addEventListener('blur', () => {
@@ -259,10 +262,15 @@ citySpan.addEventListener('click', () => {
   }
 
   function resetInput() {
-    input.style.display = 'none';
-    citySpan.style.display = 'inline';
-    error.style.display = 'none';
-  }
+  input.style.visibility = 'hidden';
+  input.style.position = 'absolute';
+  input.style.left = '-9999px';
+  input.style.pointerEvents = 'none';
+
+  citySpan.style.display = 'inline';
+  error.style.display = 'none';
+}
+
 
   async function validateCity(cityName) {
     const apiKey = 'e5b6fb3f049377a3fb4da24d6d858698';

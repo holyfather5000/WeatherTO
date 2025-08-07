@@ -93,7 +93,8 @@ img[src*="01n"], img[src*="01d"] {
 #cityInput {
     margin-top: 20px;
     padding: 8px 180px 8px 15px;
-    background: #ffffff68
+    background: #ffffff68;
+    touch-action: manipulation;
 } 
 #citySuggestions li {
     color: #252525;
