@@ -198,8 +198,36 @@ function setupCityChangeHandler() {
 
   input.type = 'text';
   input.id = 'cityInput';
+  input.setAttribute('list', 'cityList'); // Link to datalist
+input.setAttribute('autocomplete', 'on'); // Enable browser autocomplete
   input.style.display = 'none';
   input.style.marginLeft = '8px';
+
+input.addEventListener('input', async () => {
+  const query = input.value.trim();
+  if (query.length < 2) return; // Avoid too many requests
+
+  const apiKey = 'e5b6fb3f049377a3fb4da24d6d858698';
+  const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(query)}&limit=5&appid=${apiKey}`;
+
+  try {
+    const res = await fetch(geoUrl);
+    if (!res.ok) return;
+    const cities = await res.json();
+
+    const datalist = document.getElementById('cityList');
+    datalist.innerHTML = ''; // Clear previous options
+
+    cities.forEach(city => {
+      const option = document.createElement('option');
+      option.value = `${city.name}${city.state ? ', ' + city.state : ''}, ${city.country}`;
+      datalist.appendChild(option);
+    });
+  } catch (err) {
+    console.error('Autocomplete error:', err);
+  }
+});
+
 
   error.id = 'cityError';
   error.style.color = 'red';
