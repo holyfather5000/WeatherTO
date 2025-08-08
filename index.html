@@ -45,30 +45,29 @@
 <!-- <div id="temp-alert" style="display:none; font-weight:bold; margin-bottom:10px;" ></div> -->
 
 
-  <span class="opac">
-
-  <p>Air Quality: <span id="aqi"></span> <a href="https://aqicn.org/station/toronto/" target="_blank">details</a></p>
-
-  
   <div id="weather">
-    <div class="weather-info">
-     
+  <div class="weather-table" style="display: flex; justify-content: space-between; max-width: 500px; margin: 0 auto; flex-wrap: wrap; gap: 16px; opacity:0.8">
+    
+    <!-- Left Column -->
+    <div style="flex: 1; min-width: 200px;">
+      <p>Air Quality: <span id="aqi"></span> <a href="https://aqicn.org/station/toronto/" target="_blank">details</a></p>
       <p>Temperature: <span id="temp"></span><span class="marker">°C</span></p>
       <p>Humidity: <span id="humidity"></span><span class="marker">%</span></p>
-      <p>Wind Speed: <span id="wind"></span><span class="marker"> m/s</span></p>
     </div>
-  </div>
-  </span>
-      <br>
-<div class="suncont" style="max-width: 100vw; overflow-x: auto;">
-  <div style="display: flex; justify-content: space-between; width: 100%; max-width: 350px; margin: 0 auto; font-size: small; line-height: 0.5em; box-sizing: border-box;">
-    <p style="margin-right: 10px;"><strong>Sunrise:</strong> <span id="sunrise"></span></p>
-    <p><strong>Sunset:</strong> <span id="sunset"></span></p>
+
+    <!-- Right Column -->
+    <div style="flex: 1; min-width: 200px;">
+      <p>Wind Speed: <span id="wind"></span><span class="marker"> m/s</span></p>
+      <p>Sunrise: <span id="sunrise"></span></p>
+      <p>Sunset: <span id="sunset"></span></p>
+    </div>
+
   </div>
 </div>
+
+
 <br><br>
 
-<br>
    <h3>Next 24 hours</h3>
 <div id="tomorrow-forecast"></div>
 
@@ -76,7 +75,7 @@
 <div id="three-day-forecast"></div>
 <br><br><br>
 
-<div style="display: block; max-width: 400px; font-size: smaller; text-align: center;">
+<div style="display: block; max-width: 400px; font-size: smaller; text-align: center; opacity:0.7; letter-spacing: 0.8px;">
         <p>Design | Gary Leggett</p>
     </div>
 

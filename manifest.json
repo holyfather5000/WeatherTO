@@ -1,6 +1,6 @@
     {
-      "name": "Weather TO",
-      "short_name": "WeatherTO",
+      "name": "Feels Like",
+      "short_name": "Feels Like",
       "start_url": "/WeatherTO/",
       "display_override": ["fullscreen", "minimal-ui"],
   "display": "standalone",
