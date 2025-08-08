@@ -169,10 +169,8 @@ img[src*="01n"], img[src*="01d"] {
   height: 40px;
 }
 
-#temp-alert {
-  color: #ffffff; /* White */
-  font-weight: bold;
-}
+/* #temp-alert {
+  color: #ffffff; font-weight: bold; } */
 
 #three-day-forecast {
   margin-top: 1.5em;

@@ -148,26 +148,26 @@ async function getWeatherAndAirQuality() {
       `;
     }
 
-    // --- Temp alert ---
-    const todayTemps = byDate[today] || [];
-    const yesterdayTemps = byDate[yesterdayStr] || [];
-    const todayHigh = todayTemps.length ? Math.max(...todayTemps) : null;
-    const todayLow = todayTemps.length ? Math.min(...todayTemps) : null;
-    const yesterdayHigh = yesterdayTemps.length ? Math.max(...yesterdayTemps) : null;
-    const yesterdayLow = yesterdayTemps.length ? Math.min(...yesterdayTemps) : null;
+    // // --- Temp alert ---
+    // const todayTemps = byDate[today] || [];
+    // const yesterdayTemps = byDate[yesterdayStr] || [];
+    // const todayHigh = todayTemps.length ? Math.max(...todayTemps) : null;
+    // const todayLow = todayTemps.length ? Math.min(...todayTemps) : null;
+    // const yesterdayHigh = yesterdayTemps.length ? Math.max(...yesterdayTemps) : null;
+    // const yesterdayLow = yesterdayTemps.length ? Math.min(...yesterdayTemps) : null;
 
-    let alertMsg = '';
-    if (todayHigh !== null && yesterdayHigh !== null && Math.abs(todayHigh - yesterdayHigh) >= 3) {
-      alertMsg = `⚠ High changed by ${(todayHigh - yesterdayHigh).toFixed(1)}°C from yesterday.`;
-    } else if (todayLow !== null && yesterdayLow !== null && Math.abs(todayLow - yesterdayLow) >= 3) {
-      alertMsg = `⚠ Low changed by ${(todayLow - yesterdayLow).toFixed(1)}°C from yesterday.`;
-    }
+    // let alertMsg = '';
+    // if (todayHigh !== null && yesterdayHigh !== null && Math.abs(todayHigh - yesterdayHigh) >= 3) {
+    //   alertMsg = `High changed by ${(todayHigh - yesterdayHigh).toFixed(1)}°C from yesterday.`;
+    // } else if (todayLow !== null && yesterdayLow !== null && Math.abs(todayLow - yesterdayLow) >= 3) {
+    //   alertMsg = `⚠ Low changed by ${(todayLow - yesterdayLow).toFixed(1)}°C from yesterday.`;
+    // }
 
-    const alertElement = document.getElementById('temp-alert');
-    if (alertElement) {
-      alertElement.textContent = alertMsg;
-      alertElement.style.display = alertMsg ? 'block' : 'none';
-    }
+    // const alertElement = document.getElementById('temp-alert');
+    // if (alertElement) {
+    //   alertElement.textContent = alertMsg;
+    //   alertElement.style.display = alertMsg ? 'block' : 'none';
+    // }
 
   } catch (error) {
     document.getElementById('weather').innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;

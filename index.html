@@ -42,7 +42,7 @@
     <p style="position: relative; z-index: 2; text-align: center; margin: 0; font-size: 1.3em;"><span id="desc"></span></p>
 </div>
 
-<div id="temp-alert" style="display:none; font-weight:bold; margin-bottom:10px;" ></div>
+<!-- <div id="temp-alert" style="display:none; font-weight:bold; margin-bottom:10px;" ></div> -->
 
 
   <span class="opac">
@@ -84,51 +84,27 @@
    <script>
   const body = document.body;
 
+  // Apply smooth transition to background changes
+  body.style.transition = "background 2s ease-in-out";
+
+  // Define gradients
   const dayGradient = "linear-gradient(0deg, rgb(204, 225, 227) 0%, rgba(61, 183, 227, 1) 14%, rgba(67, 138, 196, 1) 50%, rgba(24, 108, 161, 1) 100%)";
-  const nightGradient = "linear-gradient(0deg, rgb(18, 32, 41) 0%, rgb(25, 55, 77) 50%, rgb(10, 25, 41) 100%)";
   const duskGradient = "linear-gradient(0deg, rgb(255, 183, 76) 0%, rgb(255, 94, 58) 50%, rgb(128, 0, 64) 100%)";
+  const nightGradient = "linear-gradient(0deg, rgb(18, 32, 41) 0%, rgb(25, 55, 77) 50%, rgb(10, 25, 41) 100%)";
 
-  const apiKey = "YOUR_API_KEY"; // Replace with your OpenWeatherMap API key
-  const lat = 43.65107;
-  const lon = -79.347015;
+  // Get current hour
+  const hour = new Date().getHours();
 
-  function updateBackgroundGradient(sunriseUnix, sunsetUnix) {
-    const nowUnix = Math.floor(Date.now() / 1000);
-
-    const dawnStart = sunriseUnix - 1800;
-    const dawnEnd = sunriseUnix + 1800;
-    const duskStart = sunsetUnix - 1800;
-    const duskEnd = sunsetUnix + 1800;
-
-    if (nowUnix >= dawnStart && nowUnix <= dawnEnd) {
-      body.style.background = duskGradient;
-    } else if (nowUnix >= duskStart && nowUnix <= duskEnd) {
-      body.style.background = duskGradient;
-    } else if (nowUnix >= sunriseUnix && nowUnix < sunsetUnix) {
-      body.style.background = dayGradient;
-    } else {
-      body.style.background = nightGradient;
-    }
+  // Apply gradient based on time
+  if (hour >= 6 && hour < 19) {
+    body.style.background = dayGradient;
+  } else if (hour >= 19 && hour < 20) {
+    body.style.background = duskGradient;
+  } else {
+    body.style.background = nightGradient;
   }
-
-  fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`)
-    .then(response => response.json())
-    .then(data => {
-      const sunrise = data.sys.sunrise;
-      const sunset = data.sys.sunset;
-      updateBackgroundGradient(sunrise, sunset);
-    })
-    .catch(error => {
-      console.error("Error fetching weather data:", error);
-      // Fallback to hour-based gradient
-      const hour = new Date().getHours();
-      if (hour >= 19 || hour < 6) {
-        body.style.background = nightGradient;
-      } else {
-        body.style.background = dayGradient;
-      }
-    });
 </script>
+
 
 
 </body>
