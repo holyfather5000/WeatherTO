@@ -5,6 +5,7 @@ body {
  min-height: 100vh;
   margin: auto;
   margin-top: 2rem;
+  margin-bottom: 0rem;
   background: linear-gradient(0deg, rgb(204, 225, 227) 0%, rgba(61, 183, 227, 1) 14%, rgba(67, 138, 196, 1) 50%, rgba(24, 108, 161, 1) 100%);
   color: white;
   font-size: 0.9em;
@@ -96,7 +97,7 @@ img[src*="01n"], img[src*="01d"] {
 }
 #cityInput {
     margin-top: 20px;
-    padding: 8px 180px 8px 15px;
+    padding: 8px 130px 8px 15px;
     background: #ffffff68;
     touch-action: manipulation;
 } 
@@ -122,7 +123,7 @@ img[src*="01n"], img[src*="01d"] {
 } */
 
 .aqi-moderate {
-  color: orange;
+  color: rgb(238, 247, 132);
 }
 
 .aqi-poor {
@@ -161,7 +162,6 @@ img[src*="01n"], img[src*="01d"] {
   font-size: 0.8rem;
   color: #2d4650;
 }
-
 .forecast-temp {
   font-size: 1rem;
   font-weight: bold;
@@ -179,7 +179,6 @@ img[src*="01n"], img[src*="01d"] {
 #three-day-forecast {
   margin-top: 1.5em;
 }
-
 
 
 @media (max-width: 380px) {
