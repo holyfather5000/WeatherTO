@@ -1,11 +1,11 @@
 body {
   font-family: 'DM Sans', Arial, sans-serif;
-  padding: 20px 40px 20px 40px;
+  padding: 20px 40px 0px 40px;
   max-width: 500px;
- min-height: 100vh;
+ min-height: 100%;
   margin: auto;
   margin-top: 2rem;
-  margin-bottom: 0rem;
+  margin-bottom: 0;
   background: linear-gradient(0deg, rgb(204, 225, 227) 0%, rgba(61, 183, 227, 1) 14%, rgba(67, 138, 196, 1) 50%, rgba(24, 108, 161, 1) 100%);
   color: white;
   font-size: 0.9em;
