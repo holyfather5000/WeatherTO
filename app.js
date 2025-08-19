@@ -148,33 +148,11 @@ async function getWeatherAndAirQuality() {
       `;
     }
 
-    // // --- Temp alert ---
-    // const todayTemps = byDate[today] || [];
-    // const yesterdayTemps = byDate[yesterdayStr] || [];
-    // const todayHigh = todayTemps.length ? Math.max(...todayTemps) : null;
-    // const todayLow = todayTemps.length ? Math.min(...todayTemps) : null;
-    // const yesterdayHigh = yesterdayTemps.length ? Math.max(...yesterdayTemps) : null;
-    // const yesterdayLow = yesterdayTemps.length ? Math.min(...yesterdayTemps) : null;
-
-    // let alertMsg = '';
-    // if (todayHigh !== null && yesterdayHigh !== null && Math.abs(todayHigh - yesterdayHigh) >= 3) {
-    //   alertMsg = `High changed by ${(todayHigh - yesterdayHigh).toFixed(1)}°C from yesterday.`;
-    // } else if (todayLow !== null && yesterdayLow !== null && Math.abs(todayLow - yesterdayLow) >= 3) {
-    //   alertMsg = `⚠ Low changed by ${(todayLow - yesterdayLow).toFixed(1)}°C from yesterday.`;
-    // }
-
-    // const alertElement = document.getElementById('temp-alert');
-    // if (alertElement) {
-    //   alertElement.textContent = alertMsg;
-    //   alertElement.style.display = alertMsg ? 'block' : 'none';
-    // }
 
   } catch (error) {
     document.getElementById('weather').innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
   }
 }
-
-
 
 // Service Worker registration
 if ('serviceWorker' in navigator) {
@@ -187,8 +165,8 @@ window.onload = function () {
   setupCityChangeHandler();
 };
 
-// Refresh every 10 minutes
-setInterval(() => window.location.reload(), 600000);
+// // Refresh every 10 minutes
+// setInterval(() => window.location.reload(), 600000);
 
 // City change handler setup
 function setupCityChangeHandler() {
@@ -227,7 +205,6 @@ input.addEventListener('input', async () => {
     console.error('Autocomplete error:', err);
   }
 });
-
 
   error.id = 'cityError';
   error.style.color = 'red';
@@ -291,11 +268,7 @@ citySpan.addEventListener('click', () => {
   }
 
   function resetInput() {
-  input.style.visibility = 'hidden';
-  input.style.position = 'absolute';
-  input.style.left = '-9999px';
-  input.style.pointerEvents = 'none';
-
+  input.style.display = 'none';
   citySpan.style.display = 'inline';
   error.style.display = 'none';
 }
